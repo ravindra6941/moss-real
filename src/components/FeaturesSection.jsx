@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TrendingUp, Users, PenTool, Brain, Globe, Award, CheckCircle } from 'lucide-react';
+import { TrendingUp, Users, PenTool, Brain, Globe, Award, Check } from 'lucide-react';
 import { mockData } from '../data/mockData';
 
-const iconMap = {
-  TrendingUp, Users, PenTool, Brain, Globe, Award
-};
+const iconMap = { TrendingUp, Users, PenTool, Brain, Globe, Award };
 
 const FeaturesSection = () => {
   const [visibleFeatures, setVisibleFeatures] = useState([]);
@@ -17,32 +15,30 @@ const FeaturesSection = () => {
           if (entry.isIntersecting) {
             mockData.features.forEach((_, index) => {
               setTimeout(() => {
-                setVisibleFeatures(prev => [...prev, index]);
-              }, index * 150);
+                setVisibleFeatures(prev => [...new Set([...prev, index])]);
+              }, index * 100);
             });
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <section id="features" ref={sectionRef} className="section-padding bg-[var(--bg-secondary)]">
       <div className="container">
-        {/* Section Header */}
-        <div className="text-center mb-16">
+        {/* Header */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="label mb-3 block">Features</span>
           <h2 className="display-md text-[var(--text-primary)] mb-4">
-            Powerful Features for AI Visibility
+            Powerful Tools for AI Visibility
           </h2>
-          <p className="body-lg max-w-2xl mx-auto">
-            Everything you need to dominate AI search results and stay ahead of the competition
+          <p className="body-lg">
+            Everything you need to dominate AI search results and stay ahead of the competition.
           </p>
         </div>
 
@@ -51,31 +47,26 @@ const FeaturesSection = () => {
           {mockData.features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon];
             const isVisible = visibleFeatures.includes(index);
-            
+
             return (
               <div
                 key={feature.id}
-                className={`feature-card transition-all duration-600 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`feature-card transition-all duration-500 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ transitionDelay: `${index * 60}ms` }}
               >
-                <div className="w-12 h-12 bg-[var(--accent-bg)] rounded-xl flex items-center justify-center mb-6">
-                  <IconComponent size={24} className="text-[var(--accent-primary)]" />
+                <div className="w-11 h-11 rounded-xl bg-[var(--accent-bg)] flex items-center justify-center mb-5">
+                  <IconComponent size={22} className="text-[var(--accent-primary)]" />
                 </div>
-                
-                <h3 className="h3 text-[var(--text-primary)] mb-4">
-                  {feature.title}
-                </h3>
-                
-                <p className="body-md mb-6">
-                  {feature.description}
-                </p>
-                
-                <div className="space-y-2">
-                  {feature.metrics.map((metric, metricIndex) => (
-                    <div key={metricIndex} className="flex items-center gap-2">
-                      <CheckCircle size={16} className="text-[var(--accent-primary)] flex-shrink-0" />
+
+                <h3 className="h3 text-[var(--text-primary)] mb-3">{feature.title}</h3>
+                <p className="body-md mb-5">{feature.description}</p>
+
+                <div className="space-y-2.5 pt-4 border-t border-[var(--border-subtle)]">
+                  {feature.metrics.map((metric, i) => (
+                    <div key={i} className="flex items-center gap-2.5">
+                      <Check size={14} className="text-[var(--accent-primary)] flex-shrink-0" />
                       <span className="body-sm text-[var(--text-secondary)]">{metric}</span>
                     </div>
                   ))}

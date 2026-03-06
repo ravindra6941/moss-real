@@ -1,126 +1,93 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, TrendingUp, Zap } from 'lucide-react';
+import { ArrowRight, BarChart3, Bot, Sparkles } from 'lucide-react';
 import { mockData } from '../data/mockData';
 
 const HeroSection = ({ onDemoRequest }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentStat, setCurrentStat] = useState(0);
-
-  const stats = [
-    { label: 'Prompts Analyzed', value: mockData.stats.prompts, icon: Sparkles },
-    { label: 'Companies Trust Us', value: mockData.stats.companies, icon: TrendingUp },
-    { label: 'AI Platforms', value: mockData.stats.platforms, icon: Zap },
-  ];
 
   useEffect(() => {
-    setIsVisible(true);
-    
-    // Rotate stats every 3 seconds
-    const statInterval = setInterval(() => {
-      setCurrentStat((prev) => (prev + 1) % stats.length);
-    }, 3000);
-
-    return () => clearInterval(statInterval);
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[var(--accent-primary)] opacity-5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--accent-primary)] opacity-3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+    <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[var(--accent-primary)] opacity-[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-[var(--accent-primary)] opacity-[0.02] rounded-full blur-[100px]" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(var(--text-muted) 1px, transparent 1px), linear-gradient(90deg, var(--text-muted) 1px, transparent 1px)',
+          backgroundSize: '64px 64px'
+        }} />
       </div>
 
-      <div className="container relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Main Headline */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className="container relative z-10 pt-24 pb-16 md:pt-32 md:pb-24">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] mb-8">
+              <div className="w-1.5 h-1.5 bg-[var(--accent-primary)] rounded-full animate-pulse" />
+              <span className="text-xs font-medium text-[var(--text-muted)]">AI Visibility Optimization Platform</span>
+            </div>
+          </div>
+
+          {/* Headline */}
+          <div className={`transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <h1 className="display-lg text-[var(--text-primary)] mb-6">
-              {mockData.hero.headline}
+              {mockData.hero.headline.split('AIVO').map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && <span className="text-[var(--accent-primary)]">AIVO</span>}
+                </span>
+              ))}
             </h1>
           </div>
 
           {/* Subheadline */}
-          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="body-lg max-w-2xl mx-auto mb-12">
+          <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <p className="body-lg max-w-2xl mx-auto mb-10">
               {mockData.hero.subheadline}
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <button className="btn-primary glow-effect">
+          {/* CTAs */}
+          <div className={`flex flex-col sm:flex-row gap-3 justify-center items-center mb-16 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <button className="btn-primary glow-effect px-8">
               {mockData.hero.primaryCTA}
-              <ArrowRight size={20} />
+              <ArrowRight size={18} />
             </button>
             <button onClick={onDemoRequest} className="btn-secondary">
               {mockData.hero.secondaryCTA}
             </button>
           </div>
 
-          {/* Animated Stats */}
-          <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-[var(--bg-secondary)]/50 backdrop-blur-md border border-[var(--border-subtle)] rounded-2xl p-8 max-w-lg mx-auto">
-              <div className="flex items-center justify-center gap-6 mb-4">
-                <div className="w-12 h-12 bg-[var(--accent-bg)] rounded-full flex items-center justify-center flex-shrunk-0">
-                  {React.createElement(stats[currentStat].icon, { 
-                    size: 28, 
-                    className: "text-[var(--accent-primary)]" 
-                  })}
-                </div>
-                <div className="text-left">
-                  <div className="h2 text-[var(--accent-primary)]">
-                    {stats[currentStat].value}
+          {/* Stats Row */}
+          <div className={`transition-all duration-700 delay-[400ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+              {[
+                { label: 'Prompts Analyzed', value: mockData.stats.prompts, icon: Sparkles },
+                { label: 'Companies Trust Us', value: mockData.stats.companies, icon: Bot },
+                { label: 'AI Platforms', value: mockData.stats.platforms, icon: BarChart3 },
+              ].map((stat, i) => (
+                <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-[var(--bg-secondary)]/60 border border-[var(--border-subtle)] backdrop-blur-sm">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--accent-bg)] flex items-center justify-center flex-shrink-0">
+                    <stat.icon size={18} className="text-[var(--accent-primary)]" />
                   </div>
-                  <div className="body-sm text-[var(--text-muted)]">
-                    {stats[currentStat].label}
+                  <div className="text-left">
+                    <div className="text-xl font-bold text-[var(--text-primary)] leading-none mb-0.5">{stat.value}</div>
+                    <div className="text-xs text-[var(--text-muted)]">{stat.label}</div>
                   </div>
                 </div>
-              </div>
-              
-              {/* Stat Indicators */}
-              <div className="flex justify-center gap-8">
-                {stats.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentStat 
-                        ? 'bg-[var(--accent-primary)]' 
-                        : 'bg-[var(--border-primary)]'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          {/*
-          <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="flex flex-col items-center gap-3">
-              <span className="body-sm text-[var(--text-muted)] mb-1 tracking-wide">Scroll to explore</span>
-              <div className="w-7 h-12 border-2 border-[var(--border-primary)] rounded-full flex justify-center ">
-                <div className="w-1.5 h-4 bg-[var(--accent-primary)] rounded-full mt-2 animate-bounce"></div>
-              </div>
-            </div>
-          </div>*/}
-        </div>
-      </div>
-
-      {/* Hero Visual Placeholder */}
-      <div className="absolute right-8 top-1/2 transform -translate-y-1/2 hidden xl:block">
-        <div className="w-96 h-96 bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-tertiary)] rounded-3xl border border-[var(--border-subtle)] p-8 shadow-2xl">
-          <div className="h-full bg-[var(--bg-primary)] rounded-2xl border border-[var(--border-subtle)] flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[var(--accent-primary)] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap size={32} className="text-[var(--bg-primary)]" />
-              </div>
-              <div className="h4 text-[var(--text-primary)] mb-2">AI Dashboard</div>
-              <div className="body-sm text-[var(--text-muted)]">Real-time AI visibility tracking</div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--bg-primary)] to-transparent pointer-events-none" />
     </section>
   );
 };

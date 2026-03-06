@@ -1,14 +1,14 @@
 export const mockData = {
   hero: {
-    headline: "From SEO to AIVO – Be Visible Where AI Looks.",
-    subheadline: "Optimize your brand for AI-driven search, assistants, and voice.",
+    headline: "From SEO to AIVO — Be Visible Where AI Looks",
+    subheadline: "MossPilot helps you optimize your brand for AI-driven search, assistants, and voice platforms. Get discovered where your customers are actually searching.",
     primaryCTA: "Boost AI Visibility",
-    secondaryCTA: "Start Free Trial"
+    secondaryCTA: "Book a Demo"
   },
-  
+
   workflow: {
     title: "How MossPilot Works",
-    subtitle: "Transform your SEO strategy in 4 simple steps",
+    subtitle: "Transform your SEO strategy with AIVO in 4 simple steps",
     steps: [
       {
         id: 1,
@@ -20,7 +20,7 @@ export const mockData = {
       {
         id: 2,
         title: "Track AI Mentions",
-        description: "See if ChatGPT, Gemini, or Copilot mention your brand—or your competitors.",
+        description: "See if ChatGPT, Gemini, or Copilot mention your brand — or your competitors.",
         icon: "Eye",
         stats: "Real-time monitoring across 5+ AI platforms"
       },
@@ -40,7 +40,7 @@ export const mockData = {
       }
     ]
   },
-  
+
   features: [
     {
       id: 1,
@@ -52,7 +52,7 @@ export const mockData = {
     {
       id: 2,
       title: "Competitor Benchmarking",
-      description: "See who AI recommends—and why. Understand your competitive landscape in AI search.",
+      description: "See who AI recommends — and why. Understand your competitive landscape in AI search.",
       icon: "Users",
       metrics: ["Competitor analysis", "Market share insights", "Recommendation patterns"]
     },
@@ -73,7 +73,7 @@ export const mockData = {
     {
       id: 5,
       title: "Multi-Platform Coverage",
-      description: "Works across ChatGPT, Gemini, Perplexity, Copilot & more emerging AI platforms.",
+      description: "Works across ChatGPT, Gemini, Perplexity, Copilot and more emerging AI platforms.",
       icon: "Globe",
       metrics: ["5+ AI platforms", "Growing coverage", "Future-proof"]
     },
@@ -85,14 +85,13 @@ export const mockData = {
       metrics: ["Authority mapping", "Source optimization", "Trust scoring"]
     }
   ],
-  
+
   testimonials: [
     {
       id: 1,
-      quote: "AIVO gave us clarity on how AI agents perceive our brand—total game-changer.",
+      quote: "MossPilot gave us clarity on how AI agents perceive our brand — total game-changer.",
       author: "Rajesh Panwar",
       title: "Head of Marketing",
-      //company: "TechFlow Inc",
       avatar: "RP",
       rating: 5
     },
@@ -101,7 +100,6 @@ export const mockData = {
       quote: "Finally, a tool that helps optimize for AI instead of just Google.",
       author: "Trilo Chitara",
       title: "Director",
-      //company: "GrowthLab",
       avatar: "TC",
       rating: 5
     },
@@ -110,12 +108,11 @@ export const mockData = {
       quote: "With AIVO, we boosted our AI visibility in weeks, not months.",
       author: "Chandrabhan Singh",
       title: "CEO",
-      //company: "MorphMotors",
       avatar: "CS",
       rating: 5
     }
   ],
-  
+
   pricing: [
     {
       id: 1,
@@ -126,12 +123,12 @@ export const mockData = {
       features: [
         "Track 50 Prompts",
         "Monitor 1 Website",
-        "AI Mentions on ChatGPT, Perpexity & Gemini",
+        "AI Mentions on ChatGPT, Perplexity & Gemini",
         "Basic Analytics",
         "Email Support",
         "Weekly tracking",
-        "30 AI blogs genereated",
-        "20 Raddit keywords tracked"
+        "30 AI blogs generated",
+        "20 Reddit keywords tracked"
       ],
       cta: "Start Free Trial",
       popular: false
@@ -150,9 +147,8 @@ export const mockData = {
         "Advanced Analytics",
         "Priority Support",
         "Weekly tracking",
-        "50 AI blogs genereated",
-        "70 Raddit keywords tracked"
-
+        "50 AI blogs generated",
+        "70 Reddit keywords tracked"
       ],
       cta: "Boost AI Visibility",
       popular: true
@@ -171,14 +167,14 @@ export const mockData = {
         "Dedicated Account Manager",
         "24/7 Phone Support",
         "Weekly tracking",
-        "70 AI blogs genereated",
-        "100 Raddit keywords tracked"
+        "70 AI blogs generated",
+        "100 Reddit keywords tracked"
       ],
       cta: "Book Demo",
       popular: false
     }
   ],
-  
+
   stats: {
     prompts: "10K+",
     companies: "5+",
