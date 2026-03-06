@@ -1,158 +1,85 @@
 import React from 'react';
-import { ArrowRight, Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
-import NewsletterSignup from './NewsletterSignup';
+import { ArrowRight, Mail, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = ({ onDemoRequest }) => {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    product: [
-      { name: 'Features', href: '#features' },
-      { name: 'Pricing', href: '#pricing' },
-      { name: 'How It Works', href: '#workflow' },
-    ],
-    company: [
-      { name: 'About', href: '/about' },
-      { name: 'Blog', href: '#' },
-      { name: 'Contact', href: '#' },
-    ],
-    legal: [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-    ]
-  };
-
-  const socialLinks = [
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
-  ];
-
   return (
-    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--border-subtle)]">
-      {/* CTA Section */}
-      <div className="border-b border-[var(--border-subtle)]">
-        <div className="container py-20">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="display-md text-[var(--text-primary)] mb-4">
-              Ready to Own the Future of SEO?
-            </h2>
-            <p className="body-lg mb-8">
-              Join companies already optimizing for AI visibility with MossPilot.
-            </p>
-            <button onClick={onDemoRequest} className="btn-primary glow-effect px-8">
-              Start with MossPilot Today
-              <ArrowRight size={18} />
+    <footer className="bg-[var(--bg-secondary)]">
+      {/* CTA Banner */}
+      <div className="border-y border-[var(--border-subtle)]">
+        <div className="container py-16">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="h1 text-[var(--text-primary)] mb-2">Ready to get started?</h3>
+              <p className="body-md">Optimize your brand for AI-driven search today.</p>
+            </div>
+            <button onClick={onDemoRequest} className="btn-primary flex-shrink-0">
+              Book a Demo
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>
       </div>
 
       {/* Footer Content */}
-      <div className="container py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="container py-10">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           {/* Brand */}
-          <div className="lg:col-span-5">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 bg-[var(--accent-primary)] rounded-lg flex items-center justify-center">
-                <span className="text-[var(--bg-primary)] font-extrabold text-sm leading-none">MP</span>
+          <div className="flex-shrink-0">
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="w-7 h-7 bg-[var(--accent-primary)] rounded-md flex items-center justify-center">
+                <span className="text-[var(--bg-primary)] font-extrabold text-xs leading-none">MP</span>
               </div>
-              <span className="text-lg font-bold text-[var(--text-primary)] tracking-tight">MossPilot</span>
+              <span className="text-base font-bold text-[var(--text-primary)]">MossPilot</span>
             </div>
-            <p className="body-md max-w-sm mb-6">
-              Transform your SEO strategy for the AI era. Get discovered where your customers are actually searching.
+            <p className="body-sm max-w-xs">
+              AI Visibility Optimization Platform.
+              <br />Powered by AIVO technology.
             </p>
-
-            {/* Newsletter */}
-            <div className="mb-6">
-              <p className="text-sm font-medium text-[var(--text-primary)] mb-3">Stay updated</p>
-              <NewsletterSignup source="footer" />
-            </div>
-
-            {/* Contact */}
-            <div className="space-y-2">
-              <a href="mailto:team@mosspilot.com" className="flex items-center gap-2.5 body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">
-                <Mail size={14} className="text-[var(--text-muted)]" />
-                team@mosspilot.com
-              </a>
-              <div className="flex items-center gap-2.5 body-sm">
-                <Phone size={14} className="text-[var(--text-muted)]" />
-                +91 8824920949
-              </div>
-              <div className="flex items-center gap-2.5 body-sm">
-                <MapPin size={14} className="text-[var(--text-muted)]" />
-                Jodhpur, India
-              </div>
-            </div>
           </div>
 
           {/* Links */}
-          <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">Product</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.product.map(link => (
-                <li key={link.name}>
-                  <a href={link.href} className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">Company</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.company.map(link => (
-                <li key={link.name}>
-                  <a href={link.href} className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-3">
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-4">Legal</h4>
-            <ul className="space-y-2.5 mb-8">
-              {footerLinks.legal.map(link => (
-                <li key={link.name}>
-                  <a href={link.href} className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Follow Us</h4>
-            <div className="flex gap-2">
-              {socialLinks.map(social => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-9 h-9 rounded-lg bg-[var(--bg-primary)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-primary)] hover:border-[var(--accent-primary)]/30 transition-all"
-                  aria-label={social.label}
-                >
-                  <social.icon size={16} />
-                </a>
-              ))}
+          <div className="flex gap-12 md:gap-16">
+            <div>
+              <h5 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3">Product</h5>
+              <ul className="space-y-2">
+                <li><a href="#features" className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">Features</a></li>
+                <li><a href="#pricing" className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">Pricing</a></li>
+                <li><a href="#workflow" className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">How It Works</a></li>
+              </ul>
             </div>
+            <div>
+              <h5 className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3">Company</h5>
+              <ul className="space-y-2">
+                <li><a href="/about" className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">About</a></li>
+                <li><a href="mailto:team@mosspilot.com" className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">Contact</a></li>
+                <li><a href="#" className="body-sm hover:text-[var(--text-secondary)] transition-colors no-underline">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Social */}
+          <div className="flex items-center gap-3">
+            <a href="#" className="w-8 h-8 rounded-md bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition-colors" aria-label="Twitter">
+              <Twitter size={15} />
+            </a>
+            <a href="#" className="w-8 h-8 rounded-md bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition-colors" aria-label="LinkedIn">
+              <Linkedin size={15} />
+            </a>
+            <a href="mailto:team@mosspilot.com" className="w-8 h-8 rounded-md bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition-colors" aria-label="Email">
+              <Mail size={15} />
+            </a>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-[var(--border-subtle)]">
-        <div className="container py-5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="body-sm">
-              &copy; {currentYear} MossPilot. All rights reserved.
-            </p>
-            <p className="body-sm">
-              Powered by <span className="text-[var(--accent-primary)] font-medium">AIVO</span> Technology
-            </p>
-          </div>
+        <div className="container py-4">
+          <p className="body-sm text-center">
+            &copy; {currentYear} MossPilot. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
